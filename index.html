@@ -14,14 +14,24 @@
     // let number = parseInt(n, 10)
     // let newNumber = number - 1
     // amount.innerText = newNumber
-    let image = document.createElement('img')
-    image.src = '/pay'
-    image.onload = function() {
-      alert('打钱成功')
-      amount.innerText = amount.innerText - 1
-    }
-    image.onerror = function() {
-      alert('打钱失败')
+
+    //用图片发起get请求
+    // let image = document.createElement('img')
+    // image.src = '/pay'
+    // image.onload = function() {
+    //   alert('打钱成功')
+    //   amount.innerText = amount.innerText - 1
+    // }
+    // image.onerror = function() {
+    //   alert('打钱失败')
+    // }
+    
+    //用js脚本发起请求  
+    let script = document.createElement('script')
+    script.src = '/pay'
+    document.body.appendChild(script)
+    script.onerror = function() {
+      alert('failed')
     }
   })
 </script>
