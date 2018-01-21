@@ -16,6 +16,12 @@
     // amount.innerText = newNumber
     let image = document.createElement('img')
     image.src = '/pay'
+    image.onload = function() {
+      alert('打钱成功')
+    }
+    image.onerror = function() {
+      alert('打钱失败')
+    }
   })
 </script>
 <!-- <script src="/main.js?callback=xxx"></script> -->

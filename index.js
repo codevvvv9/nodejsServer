@@ -36,8 +36,10 @@ var server = http.createServer(function(request, response){
     var newAmount = amount - 1
     if(Math.random() > 0.5) {
       fs.writeFileSync('./db', newAmount)
+      response.statusCode = 200
       response.write('success')
     } else {
+      response.statusCode = 400
       response.write('failed')
     }
     response.end()
