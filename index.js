@@ -31,7 +31,7 @@ var server = http.createServer(function(request, response){
     response.setHeader('Content-Type', 'application/javascript')
     response.write(string)
     response.end()
-  }else if(path === 'pay' && method.toUpperCase() === 'POST') {
+  }else if(path === '/pay' && method.toUpperCase() === 'POST') {
     var amount = fs.readFileSync('./db', 'utf8')//300
     var newAmount = amount - 1
     fs.writeFileSync('./db'. newAmount)
