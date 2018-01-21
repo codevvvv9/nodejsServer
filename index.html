@@ -1,14 +1,18 @@
 <title>首页</title>
 <link rel="stylesheet" href="/style.css">
 <h5>您的账户余额是<span id="amount">&&&amount&&&</span></h5>
-<button id="button">付款1块钱</button>
-<script >
+<!-- <button id="button">付款1块钱</button> -->
+<form action="/pay" method="post">
+  <!-- <input type="text" name="number" value="1"> -->
+  <input type="submit" value="付款">
+</form>
+<!-- <script >
   button.addEventListener('click', (e) => {
     let n = amount.innerText
     let number = parseInt(n, 10)
     let newNumber = number - 1
     amount.innerText = newNumber
   })
-</script>
+</script> -->
 <!-- <script src="/main.js?callback=xxx"></script> -->
 
