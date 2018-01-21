@@ -30,8 +30,13 @@
     let script = document.createElement('script')
     script.src = '/pay'
     document.body.appendChild(script)
-    script.onerror = function() {
+    script.onload = function(e) {
+      //debugger//可以使用它看到效果
+      e.currentTarget.remove()
+    }
+    script.onerror = function(e) {
       alert('failed')
+      e.currentTarget.remove()
     }
   })
 </script>
