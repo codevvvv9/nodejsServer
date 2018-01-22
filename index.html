@@ -8,6 +8,7 @@
 </form>
 
 <iframe name="result" src="about:blank" frameborder="0"></iframe> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script >
  
   button.addEventListener('click', (e) => {
@@ -28,27 +29,43 @@
     // }
     
     //用js脚本发起请求  
-    let script = document.createElement('script')
-    let functionName = 'wushao' + parseInt((Math.random()*100000), 10)
-    window[functionName] = function (result) {
-      if (result === 'success') {
-        amount.innerText = amount.innerText - 1
-      } else {
+    // let script = document.createElement('script')
+    // let functionName = 'wushao' + parseInt((Math.random()*100000), 10)
+    // window[functionName] = function (result) {
+    //   if (result === 'success') {
+    //     amount.innerText = amount.innerText - 1
+    //   } else {
 
+    //   }
+    // }
+    // script.src = 'http://jack.com:8001/pay?callback=' + functionName
+    // document.body.appendChild(script)
+    // script.onload = function(e) {
+    //   //debugger//可以使用它看到效果
+    //   e.currentTarget.remove()
+    //   delete window[functionName]
+    // }
+    // script.onerror = function(e) {
+    //   alert('failed')
+    //   e.currentTarget.remove()
+    //   delete window[functionName]
+    // }
+    $.ajax({
+      url: "http://jack.com:8001/pay",
+
+      // The name of the callback parameter, as specified by the YQL service
+      jsonp: "callback",
+
+      // Tell jQuery we're expecting JSONP
+      dataType: "jsonp",
+
+      // Work with the response
+      success: function (response) {
+        if(response === 'success') {
+          amount.innerText = amount.innerText - 1 
+        }  
       }
-    }
-    script.src = 'http://jack.com:8001/pay?callback=' + functionName
-    document.body.appendChild(script)
-    script.onload = function(e) {
-      //debugger//可以使用它看到效果
-      e.currentTarget.remove()
-      delete window[functionName]
-    }
-    script.onerror = function(e) {
-      alert('failed')
-      e.currentTarget.remove()
-      delete window[functionName]
-    }
+    })
   })
 
   
