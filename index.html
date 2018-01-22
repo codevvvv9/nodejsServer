@@ -42,10 +42,12 @@
     script.onload = function(e) {
       //debugger//可以使用它看到效果
       e.currentTarget.remove()
+      delete window[functionName]
     }
     script.onerror = function(e) {
       alert('failed')
       e.currentTarget.remove()
+      delete window[functionName]
     }
   })
 
